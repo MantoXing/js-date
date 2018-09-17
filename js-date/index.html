@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"  />
+<meta content="YES" name="apple-touch-fullscreen" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="no-cache" http-equiv="Cache-Control" />
+<meta name="GENERATOR" content="MSHTML 6.00.2900.3527" />
+<meta content="240" name="MobileOptimized" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone = no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>日历</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/sprite.css" rel="stylesheet" type="text/css" />
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/setRem.js"></script>
+<script src="template-simple.js"></script>
+</head>
+<body>
+	<div class="calendar">
+		<ul class="calendar-header">
+			<!-- <li>
+				<span class="left">入住日期</span><span class="right">离开日期</span>
+			</li>
+			<li class="date-selected">
+				<span class="left">9月12日</span><label>共1晚</label><span class="right">9月13日</span>
+			</li>
+			<li class="week-selected">
+				<span class="left">今天</span><span class="right">明天</span>
+			</li> -->
+			<li><input type="text" id="inputId"></li>
+		</ul>
+		<ul class="calendar-week">
+			<li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>
+		</ul>
+		<!-- calendar-date中的class说明 -->
+		<!-- "不可选日期"文字显示灰色：no-select;
+		"周末"显示橙色：weekend;
+		"今天"显示橙色：today;
+		"入住"背景橙色,文字白色：date-begin;
+		"离店"背景橙色,文字白色：date-end;
+		"房型不足"背景灰色,文字白色：no-room;
+		"入住与离店区间日期"背景浅橙色,文字白色：area-selected;
+		其中入住离店和区间样式层级高与周末和今天不冲突，房型不足层级最高； -->
+		<div id="calendar-date" class="calendar-date"></div>
+		<!-- <div class="calendar-date">
+			<ul>
+				<h3>2018年9月</h3>
+				
+				<li class="weekend no-select">
+					<p>01</p>
+					<p></p>
+				</li>
+				<li class="weekend no-select">
+					<p>02</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>03</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>04</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>05</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>06</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>07</p>
+					<p></p>
+				</li>
+				<li class="weekend no-select">
+					<p>08</p>
+					<p></p>
+				</li>
+				<li class="weekend no-select">
+					<p>09</p>
+					<p>入住</p>
+				</li>
+				<li class="no-select">
+					<p>10</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>11</p>
+					<p></p>
+				</li>
+				<li class="today">
+					<p>12</p>
+					<p>今天</p>
+				</li>
+				<li class="date-begin">
+					<p>13</p>
+					<p>入住</p>
+				</li>
+				<li class="area-selected">
+					<p>14</p>
+					<p></p>
+				</li>
+				<li class="weekend area-selected">
+					<p>15</p>
+					<p></p>
+				</li>
+				<li class="weekend area-selected">
+					<p>16</p>
+					<p></p>
+				</li>
+				<li class="area-selected">
+					<p>17</p>
+					<p></p>
+				</li>
+				<li class="date-end">
+					<p>18</p>
+					<p>离店</p>
+				</li>
+				<li>
+					<p>19</p>
+					<p></p>
+				</li>
+				<li>
+					<p>20</p>
+					<p></p>
+				</li>
+				<li>
+					<p>21</p>
+					<p></p>
+				</li>
+				<li class="weekend">
+					<p>22</p>
+					<p></p>
+				</li>
+				<li class="weekend">
+					<p>23</p>
+					<p></p>
+				</li>
+				<li>
+					<p>24</p>
+					<p></p>
+				</li>
+				<li>
+					<p>25</p>
+					<p></p>
+				</li>
+				<li>
+					<p>26</p>
+					<p></p>
+				</li>
+				<li>
+					<p>27</p>
+					<p></p>
+				</li>
+				<li>
+					<p>28</p>
+					<p></p>
+				</li>
+				<li>
+					<p>29</p>
+					<p></p>
+				</li>
+				<li class="weekend">
+					<p>30</p>
+					<p></p>
+				</li>
+			</ul>
+			<ul>
+				<h3>2018年9月</h3>
+				<li>
+					<p></p>
+					<p></p>
+				</li>
+				<li>
+					<p></p>
+					<p></p>
+				</li>
+				<li>
+					<p></p>
+					<p></p>
+				</li>
+				<li>
+					<p></p>
+					<p></p>
+				</li>
+				<li>
+					<p></p>
+					<p></p>
+				</li>
+				<li>
+					<p></p>
+					<p></p>
+				</li>
+				<li class="weekend no-select">
+					<p>01</p>
+					<p></p>
+				</li>
+				<li class="weekend no-select">
+					<p>02</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>03</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>04</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>05</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>06</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>07</p>
+					<p></p>
+				</li>
+				<li class="weekend no-select">
+					<p>08</p>
+					<p></p>
+				</li>
+				<li class="weekend no-select">
+					<p>09</p>
+					<p>入住</p>
+				</li>
+				<li class="no-select">
+					<p>10</p>
+					<p></p>
+				</li>
+				<li class="no-select">
+					<p>11</p>
+					<p></p>
+				</li>
+				<li class="today">
+					<p>12</p>
+					<p>今天</p>
+				</li>
+				<li class="date-begin">
+					<p>13</p>
+					<p>入住</p>
+				</li>
+				<li class="area-selected">
+					<p>14</p>
+					<p></p>
+				</li>
+				<li class="weekend area-selected">
+					<p>15</p>
+					<p></p>
+				</li>
+				<li class="weekend area-selected">
+					<p>16</p>
+					<p></p>
+				</li>
+				<li class="area-selected">
+					<p>17</p>
+					<p></p>
+				</li>
+				<li class="date-end">
+					<p>18</p>
+					<p>离店</p>
+				</li>
+				<li>
+					<p>19</p>
+					<p></p>
+				</li>
+				<li class="no-room">
+					<p>20</p>
+					<p>不足</p>
+				</li>
+				<li>
+					<p>21</p>
+					<p></p>
+				</li>
+				<li class="weekend">
+					<p>22</p>
+					<p></p>
+				</li>
+				<li class="weekend">
+					<p>23</p>
+					<p></p>
+				</li>
+				<li>
+					<p>24</p>
+					<p></p>
+				</li>
+				<li>
+					<p>25</p>
+					<p></p>
+				</li>
+				<li>
+					<p>26</p>
+					<p></p>
+				</li>
+				<li>
+					<p>27</p>
+					<p></p>
+				</li>
+				<li>
+					<p>28</p>
+					<p></p>
+				</li>
+				<li>
+					<p>29</p>
+					<p></p>
+				</li>
+				<li class="weekend">
+					<p>30</p>
+					<p></p>
+				</li>
+			</ul>
+		</div> -->
+		<ul class="bottom-opration fixed-bottom">
+			<i class="submit submit-normal grey">确认选择/请选择离店日期</i>
+		</ul>
+	</div>
+	<!-- [[ template -->
+		<!-- data-list-temp -->
+		<script  id="date-list-temp" type="text/html">
+		{{each list as item i}}
+		<ul>
+			<h3>{{item.year}}年{{item.month}}月</h3>
+			{{each item.list as value }}
+			<li data-year="{{value.year}}" data-month="{{value.month}}" data-day="{{value.day}}" class="{{if value.week == 6 || value.week == 0}}weekend{{/if}} {{if value.isclick}}{{else}}no-select{{/if}} {{if value.istoday}}today{{/if}}">
+				<p>{{value.day}}</p>
+				<p>{{if value.istoday}}今天{{/if}}</p>
+			</li>
+			{{/each}}
+		</ul>
+		{{/each}}
+		</script>
+	<!-- template ]] -->
+<script type="text/javascript">
+var DivScroll = function( layerNode ){
+			 //如果没有这个元素的话，那么将不再执行下去
+			 if ( !document.querySelector( layerNode ) ) return ;
+
+			 this.popupLayer = document.querySelector( layerNode ) ;
+			 this.startX = 0 ;
+			 this.startY = 0 ;
+
+			 this.popupLayer.addEventListener('touchstart', function (e) {
+					 this.startX = e.changedTouches[0].pageX;
+					 this.startY = e.changedTouches[0].pageY;
+			 }, false);
+
+			 // 仿innerScroll方法
+			 this.popupLayer.addEventListener('touchmove', function (e) {
+
+					 e.stopPropagation();
+
+					 var deltaX = e.changedTouches[0].pageX - this.startX;
+					 var deltaY = e.changedTouches[0].pageY - this.startY;
+
+					 // 只能纵向滚
+					 if(Math.abs(deltaY) < Math.abs(deltaX)){
+							 e.preventDefault();
+							 return false;
+					 }
+
+					 if( this.offsetHeight + this.scrollTop >= this.scrollHeight){
+							 if(deltaY < 0) {
+									 e.preventDefault();
+									 return false;
+							 }
+					 }
+					 if(this.scrollTop === 0){
+							 if(deltaY > 0) {
+									 e.preventDefault();
+									 return false;
+							 }
+					 }
+					 // 会阻止原生滚动
+					 // return false;
+			 },false);
+
+	 }
+
+	 //调用
+var divScroll = new DivScroll('.calendar-date');
+document.addEventListener("touchmove",function(e){
+e.preventDefault();
+e.stopPropagation();
+},false);
+
+</script>
+<script src="index.js"></script>
+</body>
+</html>
